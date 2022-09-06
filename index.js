@@ -7,7 +7,8 @@ app.use(cors());
 
 
 app.get("/", async (req, res) => {
-    return console.log("check")
+    console.log("check")
+    res.send("success");
 });
 
 app.get("/userList", async (req, res) => {
