@@ -43,4 +43,5 @@ app.post("/create", async (req, res) => {
 
     res.send({ msg: "User Added" });
 });
-app.listen(4000, () => console.log("Up & RUnning *4000"));
+app.listen(process.env.PORT || 5000, () => console.log("Up & RUnning *4000"))
+// app.listen(4000, () => console.log("Up & RUnning *4000"));
