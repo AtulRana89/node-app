@@ -7,6 +7,10 @@ app.use(cors());
 
 
 app.get("/", async (req, res) => {
+    return console.log("check")
+});
+
+app.get("/userList", async (req, res) => {
     const snapshot = await User.orderBy('itemId', 'desc').limit(10000).get()
     const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     let total = list.length;
