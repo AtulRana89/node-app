@@ -6,10 +6,6 @@ app.use(express.json());
 app.use(cors());
 
 
-app.get("/", async (req, res) => {
-    console.log("check")
-    res.send("success");
-});
 
 app.get("/userList", async (req, res) => {
     const snapshot = await User.orderBy('itemId', 'desc').limit(10000).get()
@@ -31,18 +27,17 @@ app.post("/create", async (req, res) => {
         })
     }
 
-    // mulData.forEach(function (obj) {
-    //     User.doc(obj.itemId)
-    //         .set(obj)
-    //         .then(function (docRef) {
-    //             console.log("Document written" + obj.itemId);
-    //         })
-    //         .catch(function (error) {
-    //             console.error("Error adding document: ", error);
-    //         });
-    // });
+    mulData.forEach(function (obj) {
+        User.doc(obj.itemId)
+            .set(obj)
+            .then(function (docRef) {
+                console.log("Document written" + obj.itemId);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    });
 
     res.send({ msg: "User Added" });
 });
 app.listen(process.env.PORT || 5000, () => console.log("Up & RUnning *4000"))
-// app.listen(4000, () => console.log("Up & RUnning *4000"));
